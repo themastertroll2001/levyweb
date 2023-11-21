@@ -1,0 +1,32 @@
+﻿@model Barberia.Models.Corte
+
+@{
+    ViewData["Title"] = "Editar Corte";
+}
+
+<div class="container mt-5">
+    <h2>Editar Corte</h2>
+    <form method="post" action="@Url.Action("ActualizarCorte", "Modulos")" enctype="multipart/form-data">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="form-group">
+            <label>Nombre del Corte:</label>
+            <input type="text" class="form-control" name="NombreCorte" value="@Model.NombreCorte" required />
+        </div>
+        <div class="form-group">
+            <label>Precio:</label>
+            <input type="text" class="form-control" id="precio" name="Precio" placeholder="@Model.Precio" value="@Model.Precio" required>
+        </div>
+        <div class="form-group">
+            <label>Imagen actual:</label>
+            <img src="@Model.RutaArchivo" alt="Imagen del Corte" class="img-thumbnail" style="max-width: 200px;" />
+        </div>
+        <div class="form-group">
+            <label>Cambiar imagen:</label>
+            <input type="file" class="form-control" name="Archivo" accept=".jpg, .jpeg, .png" />
+        </div>
+        <br />
+
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="@Url.Action("Cortes", "Modulos")" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>

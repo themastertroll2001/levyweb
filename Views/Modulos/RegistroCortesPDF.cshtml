@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Barberia.Models.RegistrosCorte>
+
+<div class="container mt-4">
+    <h2 class="mb-4">Registros de Cortes</h2>
+
+    <!-- Tabla de registros -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Usuario</th>
+                <th>Corte</th>
+                <th>Precio</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var registro in Model)
+            {
+                <tr>
+                    <td>@registro.Fecha.ToShortDateString()</td>
+                    <td>@registro.Usuario.NombreUsuario</td>
+                    <td>@registro.Corte.NombreCorte</td>
+                    <td>Q. @registro.Precio</td>
+                    <td>@(registro.Estado == 1 ? "Activo" : "Inactivo")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Total por mes -->
+    <div class="mt-4">
+        <h3>Total por mes</h3>
+        @foreach (var group in Model.Where(r => r.Estado == 1).GroupBy(r => r.Fecha.Month))
+        {
+            <div class="mt-2">
+                <strong>Mes: </strong>   @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(group.Key)
+                <strong>Total: </strong>  Q. @group.Sum(r => r.Precio)
+            </div>
+        }
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        var anchors = document.getElementsByTagName("a");
+        for (var i = 0; i < anchors.length; i++) {
+            anchors[i].href = "javascript:void(0)";
+        } //omite links dentro del pdf
+    };
+</script>

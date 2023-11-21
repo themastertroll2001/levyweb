@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Barberia.Models.Categoria>
+
+<div class="container mt-3" style="max-width: 800px;">
+
+    @if (TempData["SuccessMessageCE"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessageCE"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessageCE"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessageCE"]
+        </div>
+    }
+    <br />
+
+    <h2>Categorías</h2>
+    <a href="@Url.Action("InsertarCategoria", "Categorias")" class="btn btn-primary">Añadir nueva categoría</a>
+    <br />
+    <br />
+
+    <!-- Otros elementos de la vista, como una tabla para mostrar las categorías -->
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Usuario</th> <!-- Añadido aquí -->
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var categoria in Model)
+                {
+                    <tr>
+                        <td>@categoria.Nombre</td>
+                        <td>@categoria.Descripcion</td>
+                        <td>@categoria.Usuario.NombreUsuario</td> <!-- Mostrando el nombre del usuario aquí -->
+                        <td>@(categoria.Estatus ? "Activo" : "Inactivo")</td>
+                        <td>
+                            
+                            @if (categoria.Estatus)
+                            {
+                                <a href="@Url.Action("Editar", "Categorias", new { id = categoria.CategoriaId })" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-edit"></i> Editar
+                                </a>
+                                <br />
+                                <br />
+                                <a href="/Categorias/Eliminar/@categoria.CategoriaId" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"></i> Eliminar
+                                </a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info">No hay categorías registradas.</div>
+    }
+
+</div>
+

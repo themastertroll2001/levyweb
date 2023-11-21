@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Barberia.Models.Producto>
+
+<div class="container mt-3" style="max-width: 800px;">
+    <h2>Productos</h2>
+    <br />
+
+    <!-- Mostrar los productos en una tabla -->
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Categoría</th>
+                    <th>Imagen</th>
+                    <th>Estado</th>
+                    <th>Usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var producto in Model)
+                {
+                    <tr>
+                        <td>@producto.Nombre</td>
+                        <td>@producto.Descripcion</td>
+                        <td>@producto.Precio</td>
+                        <td>@producto.Stock</td>
+                        <td>@producto.Categoria?.Nombre</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(producto.Imagen))
+                            {
+                                <img src="~/Productos/@producto.Imagen" alt="@producto.Nombre" style="max-width:100px; max-height:100px;" />
+                            }
+                            else
+                            {
+                                <text>No disponible</text>
+                            }
+                        </td>
+                        <td>@(producto.Estatus ? "Activo" : "Inactivo")</td>
+                        <td>@producto.Usuario?.NombreUsuario</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info">No hay productos registrados.</div>
+    }
+</div>
+<script>
+    window.onload = function () {
+        var anchors = document.getElementsByTagName("a");
+        for (var i = 0; i < anchors.length; i++) {
+            anchors[i].href = "javascript:void(0)";
+        } //omite links dentro del pdf
+    };
+</script>
+

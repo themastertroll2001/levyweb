@@ -1,0 +1,30 @@
+﻿@model Barberia.Models.Categoria
+<div class="container mt-3" style="max-width: 800px;">
+    @if (TempData["SuccessMessageC"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessageC"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessageC"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessageC"]
+        </div>
+    }
+    <h2>Insertar nueva categoría</h2>
+
+    <form method="post">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input asp-for="Nombre" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label>Descripción (Opcional)</label>
+            <textarea asp-for="Descripcion" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+
+</div>

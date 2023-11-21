@@ -1,0 +1,181 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Barberia
+build_property.RootNamespace = Barberia
+build_property.ProjectDir = C:\Users\Juan\Documents\Visual Studio 2022\Barberia\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Juan\Documents\Visual Studio 2022\Barberia
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Categorias/Categorias.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xDYXRlZ29yaWFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Categorias/EditarCategoria.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xFZGl0YXJDYXRlZ29yaWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Categorias/EditarProducto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xFZGl0YXJQcm9kdWN0by5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Categorias/InsertarCategoria.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xJbnNlcnRhckNhdGVnb3JpYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Categorias/InsertarProductos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xJbnNlcnRhclByb2R1Y3Rvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Categorias/Productos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xQcm9kdWN0b3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Categorias/ProductosPDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xQcm9kdWN0b3NQREYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Cuenta/DashBoardUsuarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXERhc2hCb2FyZFVzdWFyaW9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Cuenta/HistorialRoles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXEhpc3RvcmlhbFJvbGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Cuenta/Recuperar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXFJlY3VwZXJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Cuenta/Registrarse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXFJlZ2lzdHJhcnNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Cuenta/Token.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXFRva2VuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Cuenta/Token2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhXFRva2VuMi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Event/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Event/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Event/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Event/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Event/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Event/IndexPDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcSW5kZXhQREYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Home/Citasdiarias.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaXRhc2RpYXJpYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Home/CortesVista.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb3J0ZXNWaXN0YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Home/VistaProductos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaXN0YVByb2R1Y3Rvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Modulos/Cortes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxvc1xDb3J0ZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Modulos/CortesEditar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxvc1xDb3J0ZXNFZGl0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Modulos/CortesInsertar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxvc1xDb3J0ZXNJbnNlcnRhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Modulos/EditarRegistroCorte.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxvc1xFZGl0YXJSZWdpc3Ryb0NvcnRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Modulos/IngresarVenta.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxvc1xJbmdyZXNhclZlbnRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Modulos/RegistroCorteInsertar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxvc1xSZWdpc3Ryb0NvcnRlSW5zZXJ0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Modulos/RegistroCortes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxvc1xSZWdpc3Ryb0NvcnRlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Modulos/RegistroCortesPDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxvc1xSZWdpc3Ryb0NvcnRlc1BERi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Modulos/Ventas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxvc1xWZW50YXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Modulos/VentasPDF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxvc1xWZW50YXNQREYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Modulos/VistaRegistrosCortes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxvc1xWaXN0YVJlZ2lzdHJvc0NvcnRlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Juan/Documents/Visual Studio 2022/Barberia/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-hxd28qf1m9

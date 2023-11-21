@@ -1,0 +1,91 @@
+﻿@using System.Globalization;
+@model List<Barberia.Models.Venta>
+
+@{
+    var totalsByMonth = new Dictionary<string, decimal>();
+
+    for (int month = 1; month <= 12; month++)
+    {
+        var totalForMonth = Model.Where(v => v.Fecha.Month == month && v.Fecha.Year == DateTime.Now.Year).Sum(v => v.Precio * v.Cantidad);
+        if (totalForMonth > 0)
+        {
+            totalsByMonth.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month), totalForMonth);
+        }
+    }
+}
+
+
+<div class="container mt-5">
+    <br />
+    <input type="text" id="searchInput" class="form-control mb-3 shadow-sm" placeholder="Buscar...">
+    <br />
+    <br />
+    <div class="mb-3">
+        <a href="@Url.Action("IngresarVenta", "Modulos")" class="btn btn-primary">
+            Ingresar Venta
+        </a>
+        <br />
+        <hr />
+        <a asp-action="DownloadPDFVentas" class="btn btn-secondary">Descargar PDF</a>
+        <br />
+
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <table id="tablaUsuarios" class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Nombre de Usuario</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Nombre de Cliente</th>
+                        <th>Estatus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var venta in Model)
+                    {
+                        <tr>
+                            <td>@venta.Fecha</td>
+                            <td>@venta.IdUsuarioNavigation?.NombreCompleto</td>
+                            <td>@venta.Producto?.Nombre</td>
+                            <td>@venta.Cantidad</td>
+                            <td>@venta.Precio</td>
+                            <td>@venta.NombreCliente</td>
+                            <td>@(venta.Estatus ? "Activo" : "Inactivo")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <h2>Totales por Mes</h2>
+            @foreach (var total in totalsByMonth)
+            {
+                <div class="d-flex justify-content-between my-1">
+                    <span>@total.Key:</span>
+                    <span>Q. @total.Value</span>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+
+            $("#tablaUsuarios tbody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+
+</script>

@@ -1,0 +1,81 @@
+﻿@model List<Barberia.Models.Corte>
+
+@{
+    ViewData["Title"] = "Cortes";
+}
+
+<div class="container mt-5">
+    @if (TempData["SuccessMessage_Cortes"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage_Cortes"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage_Cortes"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage_Cortes"]
+        </div>
+    }
+    <br />
+    <input type="text" id="searchInput" class="form-control mb-3 shadow-sm" placeholder="Buscar...">
+    <br />
+    <br />
+    <div class="mb-3">
+        <a href="@Url.Action("CortesInsertar", "Modulos")" class="btn btn-primary">
+            Registrar nuevo Corte
+        </a>
+    </div>
+    <br />
+    <table id="tablaUsuarios" class="table table-hover table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre del Corte</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var corte in Model)
+            {
+                <tr>
+                    <td>@corte.NombreCorte</td>
+                    <td>@corte.Precio</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(corte.RutaArchivo))
+                        {
+                            <img src="@corte.RutaArchivo" alt="@corte.NombreCorte  @corte.RutaArchivo" width="100" height="100">
+                        }
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Editar", "Modulos", new { id = corte.Id })" class="btn btn-sm btn-warning">
+                            <i class="fas fa-edit"></i> Editar
+                        </a>
+                        <form method="post" action="@Url.Action("Eliminar", "Modulos")" class="d-inline">
+                            <input type="hidden" name="id" value="@corte.Id" />
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este corte?');">
+                                <i class="fas fa-trash-alt"></i> Eliminar
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+
+            $("#tablaUsuarios tbody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+
+</script>

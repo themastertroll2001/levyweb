@@ -1,0 +1,41 @@
+﻿<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Cambiar Contraseña
+                </div>
+                <div class="card-body">
+                    <form asp-action="ActualizarContrasena" asp-controller="Cuenta" method="post">
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                            <input type="password" class="form-control" id="newPassword" name="NewPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmNewPassword" class="form-label">Confirmar Nueva Contraseña</label>
+                            <input type="password" class="form-control" id="confirmNewPassword" name="ConfirmNewPassword" required>
+                            <span id="passwordError" style="color: red;"></span>
+                        </div>
+                        <input type="hidden" name="Token" value="@ViewBag.Token" />
+                        <button type="submit" class="btn btn-primary" onclick="return validatePasswords()">Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function validatePasswords() {
+        var newPassword = document.getElementById("newPassword").value;
+        var confirmNewPassword = document.getElementById("confirmNewPassword").value;
+
+        if (newPassword !== confirmNewPassword) {
+            document.getElementById("passwordError").textContent = "Sus contraseñas no son iguales.";
+            return false;  // esto previene que el formulario se envíe
+        } else {
+            document.getElementById("passwordError").textContent = "";
+            return true;  // esto permite que el formulario se envíe
+        }
+    }
+</script>

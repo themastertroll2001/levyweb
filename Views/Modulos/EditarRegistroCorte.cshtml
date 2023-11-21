@@ -1,0 +1,66 @@
+﻿@model Barberia.Models.RegistrosCorte
+
+@{
+    ViewData["Title"] = "Editar Registro de Corte";
+}
+
+@if (TempData["ValidationErrors"] != null)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in (List<string>)TempData["ValidationErrors"])
+            {
+                <li>@error</li>
+            }
+        </ul>
+    </div>
+}
+
+<div class="container mt-5" style="max-width: 600px;">
+
+    <form method="post" asp-controller="Modulos" asp-action="EditarRegistroCorte">
+        <input type="hidden" asp-for="Id" />
+        
+        <div class="form-group">
+            <label for="NombreCliente">Nombre del Cliente:</label>
+            <input type="text" class="form-control" id="NombreCliente" asp-for="NombreCliente" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Hora">Hora:</label>
+            <input type="time" class="form-control" id="Hora" asp-for="Hora" required>
+        </div>
+
+        <div class="form-group">
+            <label for="CorteId">Seleccione un Corte:</label>
+            <select class="form-control" id="CorteId" asp-for="CorteId">
+                @if (ViewBag.Cortes != null)
+                {
+                    foreach (var corte in (IEnumerable<Barberia.Models.Corte>)ViewBag.Cortes)
+                    {
+                        if (corte.Id == Model.CorteId)
+                        {
+                            <option value="@corte.Id" selected="selected">@corte.NombreCorte</option>
+                        }
+                        else
+                        {
+                            <option value="@corte.Id">@corte.NombreCorte</option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="Precio">Precio:</label>
+            <input type="text" class="form-control" id="Precio" asp-for="Precio" required>
+        </div>
+
+        <!-- Agregamos un campo oculto para el UsuarioId -->
+        <input type="hidden" asp-for="UsuarioId" value="@ViewBag.UsuarioId" />
+
+        <br />
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+</div>

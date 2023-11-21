@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Barberia.Models.RegistrosCorte>
+
+<div class="container mt-4">
+    <h2 class="mb-4">Registros de Cortes</h2>
+
+    <!-- Filtros -->
+    <form method="get" class="mb-4">
+        <div class="form-group">
+            <label for="nombreUsuario">Filtrar por usuario:</label>
+            <select name="nombreUsuario" class="form-control">
+                <option value="">Todos</option>
+                @foreach (var usuario in ViewBag.Usuarios)
+                {
+                    <option value="@usuario">@usuario</option>
+                }
+            </select>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <label for="mes">Filtrar por mes:</label>
+            <select name="mes" class="form-control">
+                <option value="">Todos</option>
+                @for (int i = 1; i <= 12; i++)
+                {
+                    <option value="@i">@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
+                }
+            </select>
+        </div>
+
+        <br />
+
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+        <br />
+        <hr />
+        <a asp-action="DownloadPDFVistaRegistroCortes" class="btn btn-secondary">Descargar PDF</a>
+        <br />
+       
+    </form>
+
+    <div class="form-group">
+        <br />
+        <input type="text" id="searchInput" class="form-control mb-3 shadow-sm" placeholder="Buscar...">
+        <br />
+    </div>
+
+    <!-- Tabla de registros -->
+    <table id="tablaUsuarios" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Usuario</th>
+                <th>Corte</th>
+                <th>Precio</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var registro in Model)
+            {
+                <tr>
+                    <td>@registro.Fecha.ToShortDateString()</td>
+                    <td>@registro.Usuario.NombreUsuario</td>
+                    <td>@registro.Corte.NombreCorte</td>
+                    <td>Q. @registro.Precio</td>
+                    <td>@(registro.Estado == 1 ? "Activo" : "Inactivo")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Total por mes -->
+    <div class="mt-4">
+        <h3>Total por mes</h3>
+        @foreach (var group in Model.Where(r => r.Estado == 1).GroupBy(r => r.Fecha.Month))
+        {
+            <div class="mt-2">
+                <strong>Mes: </strong>   @System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(group.Key)
+                <strong>Total: </strong>  Q. @group.Sum(r => r.Precio)
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+
+            $("#tablaUsuarios tbody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+
+</script>

@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="container mt-5">
+
+    <!-- Imagen principal -->
+    <div class="d-flex justify-content-center">
+        <div class="img-container">
+            <img src="~/Inicio/Logo.jpeg" alt="Logo Barbería" class="center-cropped">
+        </div>
+    </div>
+
+    
+    <!-- Mision y vision -->
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h2>Misión</h2>
+            <p>Brindar a nuestros clientes servicios de barbería de alta calidad, en un ambiente relajante y masculino, donde cada visita sea una experiencia única.</p>
+        </div>
+        <div class="col-md-6">
+            <h2>Visión</h2>
+            <p>Ser reconocidos como la barbería de elección en la ciudad, estableciendo nuevos estándares de excelencia en el servicio al cliente y la innovación en el cuidado del cabello masculino.</p>
+        </div>
+    </div>
+
+    <!-- Título antes de las imágenes -->
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h2>Barbería Levy</h2>
+        </div>
+    </div>
+
+    <!-- Dos imágenes al mismo nivel -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <img src="~/Inicio/Barberia.jpeg" alt="Imagen 1" class="img-fluid mb-md-0">
+        </div>
+        <div class="col-md-6">
+            <img src="~/Inicio/Cortes 2.jpeg" alt="Imagen 2" class="img-fluid mb-md-0">
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <img src="~/Inicio/Cortes 1.jpeg" alt="Imagen 3" class="img-fluid">
+        </div>
+    </div>
+
+
+</div>
+
+<!-- Estilos CSS -->
+<style>
+    .img-container {
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .center-cropped {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Estilos personalizados */
+    @@media (max-width: 768px) {
+        .mb-md-0 {
+            margin-bottom: 20px;
+        }
+    }
+
+</style>

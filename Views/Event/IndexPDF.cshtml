@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Barberia.Models.Event>
+
+@{
+    ViewData["Title"] = "Lista citas";
+}
+
+<div class="container mt-3" style="max-width: 600px;">
+
+    <h1>@ViewData["Title"]</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fechainicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Finfecha)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Fechainicio)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Finfecha)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    window.onload = function () {
+        var anchors = document.getElementsByTagName("a");
+        for (var i = 0; i < anchors.length; i++) {
+            anchors[i].href = "javascript:void(0)";
+        } //omite links dentro del pdf
+    };
+</script>
+
+

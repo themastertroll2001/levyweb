@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Barberia.Models.Producto>
+@{
+    var categorias = (IEnumerable<Barberia.Models.Categoria>)ViewBag.Categorias;
+}
+
+<div class="container mt-3">
+    <h2>Productos</h2>
+    <br />
+
+    <!-- Filtros -->
+    <form method="get">
+        <div class="mb-3">
+            <label for="filtroCategoria" class="form-label">Filtrar por categoría:</label>
+            <select id="filtroCategoria" name="categoriaId" class="form-control w-auto">
+                <option value="">Todas las categorías</option>
+                @foreach (var categoria in categorias)
+                {
+                    if (Context.Request.Query["categoriaId"] == categoria.CategoriaId.ToString())
+                    {
+                        <option value="@categoria.CategoriaId" selected>@categoria.Nombre</option>
+                    }
+                    else
+                    {
+                        <option value="@categoria.CategoriaId">@categoria.Nombre</option>
+                    }
+                }
+
+
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="filtroPrecio" class="form-label">Ordenar por precio:</label>
+            <select id="filtroPrecio" name="ordenPrecio" class="form-control w-auto">
+                @if (Context.Request.Query["ordenPrecio"] == "asc")
+                {
+                    <option value="asc" selected>Menor a mayor</option>
+                }
+                else
+                {
+                    <option value="asc">Menor a mayor</option>
+                }
+
+                @if (Context.Request.Query["ordenPrecio"] == "desc")
+                {
+                    <option value="desc" selected>Mayor a menor</option>
+                }
+                else
+                {
+                    <option value="desc">Mayor a menor</option>
+                }
+
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+    </form>
+
+    <hr />
+
+    <!-- Mostrar productos en tarjetas -->
+    <div class="row">
+        @foreach (var producto in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="~/Productos/@producto.Imagen" alt="@producto.Nombre" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">@producto.Nombre</h5>
+                        <p class="card-text">@producto.Descripcion</p>
+                        <p class="card-text">Q.@producto.Precio</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Paginación -->
+    <div class="mt-4">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                @for (int i = 1; i <= ViewBag.TotalPaginas; i++)
+                {
+                    <li class="page-item @(i == ViewBag.PaginaActual ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("VistaProductos", "Home", new { categoriaId = Context.Request.Query["categoriaId"], ordenPrecio = Context.Request.Query["ordenPrecio"], pagina = i })">@i</a>
+
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

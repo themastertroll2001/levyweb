@@ -1,0 +1,48 @@
+﻿@model List<Barberia.Models.Corte>
+
+@{
+    ViewData["Title"] = "Visualización de Cortes";
+}
+
+<style>
+    .corte-card {
+        height: 500px; /* Establece la altura de la tarjeta */
+    }
+
+    .corte-card-img {
+        height: 70%; /* Establece la altura del contenedor de la imagen a un 70% de la tarjeta */
+        overflow: hidden; /* Evita que la imagen se desborde del contenedor */
+        display: flex;
+        align-items: center; /* Centra la imagen verticalmente */
+        justify-content: center; /* Centra la imagen horizontalmente */
+    }
+
+        .corte-card-img img {
+            max-width: 100%; /* Asegura que la imagen no sea más ancha que su contenedor */
+            max-height: 100%; /* Asegura que la imagen no sea más alta que su contenedor */
+        }
+</style>
+
+<div class="container mt-5">
+    <h2 class="d-flex justify-content-center align-items-center">Cortes Disponibles</h2>
+    <br />
+    <br />
+
+    <div class="row">
+        @foreach (var corte in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card corte-card">
+                    <div class="corte-card-img">
+                        <img src="@corte.RutaArchivo" alt="@corte.NombreCorte">
+                    </div>
+                    <div class="card-body">
+                        <h5 class=" d-flex justify-content-center align-items-center card-title">@corte.NombreCorte</h5>
+                        <p class=" d-flex justify-content-center align-items-center card-text">Q. @corte.Precio</p>
+                        <!-- Puedes añadir más detalles o botones si lo deseas -->
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿@model Barberia.Models.RegistrosCorte
+
+@{
+    ViewData["Title"] = "Insertar Registro de Corte";
+}
+
+<div class="container mt-5" style="max-width: 600px;">
+    @if (TempData["SuccessMessage_RegCorte"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage_RegCorte"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage_RegCorte"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage_RegCorte"]
+        </div>
+    }
+
+    <form method="post" asp-controller="Modulos" asp-action="RegistroCorteInsertar">
+        <div class="form-group">
+            <label for="NombreCliente">Nombre del Cliente:</label>
+            <input type="text" class="form-control" id="NombreCliente" name="NombreCliente" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Hora">Hora:</label>
+            <input type="time" class="form-control" id="Hora" name="Hora" required>
+        </div>
+
+        <div class="form-group">
+            <label for="CorteId">Seleccione un Corte:</label>
+            <select class="form-control" id="CorteId" name="CorteId">
+                @if (ViewBag.Cortes != null)
+                {
+                    @foreach (var corte in (IEnumerable<Barberia.Models.Corte>)ViewBag.Cortes)
+                    {
+                        <option value="@corte.Id">@corte.NombreCorte</option>
+                    }
+                }
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Precio">Precio:</label>
+            <input type="text" class="form-control" id="Precio" name="Precio" required>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+</div>

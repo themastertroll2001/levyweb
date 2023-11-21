@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Inserción de Cortes";
+}
+
+<div class="container mt-3" style="max-width: 600px;">
+    <h2>Inserción de Cortes</h2>
+    <hr />
+
+    @if (TempData["SuccessMessage_Cortes"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage_Cortes"]
+        </div>
+    }
+
+    <form asp-controller="Modulos" asp-action="CortesInsertar" method="post" enctype="multipart/form-data">
+        <div class="mb-1">
+            <label for="nombreCorte" class="form-label">Nombre del Corte</label>
+            <input type="text" class="form-control" id="nombreCorte" name="NombreCorte" placeholder="Ejemplo: Corte Militar">
+        </div>
+        <div class="mb-1">
+            <label for="precio" class="form-label">Precio (en quetzales)</label>
+            <input type="text" class="form-control" id="precio" name="Precio" placeholder="Entre 15 y 30">
+        </div>
+        <div class="mb-1">
+            <label for="archivo" class="form-label">Archivo (JPEG o PNG solamente)</label>
+            <input type="file" class="form-control" id="archivo" name="Archivo" accept=".jpg, .jpeg, .png">
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Insertar Corte</button>
+    </form>
+</div>

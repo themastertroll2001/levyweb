@@ -1,0 +1,23 @@
+﻿@model Barberia.Models.Categoria
+<div class="container mt-3" style="max-width: 800px;">
+
+    <h2>Editar Categoría</h2>
+
+    <form method="post" action="@Url.Action("Editar", "Categorias")">
+        <input type="hidden" name="CategoriaId" value="@Model.CategoriaId" />
+
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" name="Nombre" value="@Model.Nombre" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label>Descripción</label>
+            <textarea name="Descripcion" class="form-control" required>@Model.Descripcion</textarea>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="@Url.Action("Categorias", "Categorias")" class="btn btn-secondary">Regresar</a>
+    </form>
+
+</div>
+

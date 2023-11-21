@@ -1,0 +1,21 @@
+﻿@model UsuarioModel
+
+
+<div class="container mt-5">
+    <h2 class="text-center">Recuperar Contraseña</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form asp-action="Recuperar" asp-controller="Cuenta" method="post">
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico</label>
+                    <br />
+                    <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingrese su correo electrónico" required>
+                </div>
+
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary">Recuperar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

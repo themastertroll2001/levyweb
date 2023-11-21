@@ -1,0 +1,6 @@
+/* Agrega esto en tu archivo Barberia.styles.css */
+@media (max-width: 767.98px) {
+    .mobile-margin-bottom {
+        margin-bottom: -300px;
+    }
+}

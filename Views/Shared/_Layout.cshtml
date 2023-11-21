@@ -1,0 +1,162 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="~/barberialevyico.ico" />
+    <title>@ViewData["Title"] - Barberia</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Barberia.styles.css" asp-append-version="true" />
+    <!-- Agregar FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true">
+    <!-- Estilos CSS de DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Scripts JS para jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Scripts JS para DataTables y sus dependencias -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <style>
+    .navbar-toggler-icon {
+        color: white;
+    }
+    </style>
+
+    <!--CALENDARIO SCRIPTS-->
+    <link rel="stylesheet" href="~/css/main.css" />
+    <script src="~/js/main.js"></script>
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Barberia Levy</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation" style="background-color: white;" >
+                    <span class="navbar-toggler-icon" ></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" style="color: white;">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="CortesVista">Cortes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="VistaProductos">Productos</a>
+                        </li>
+                     
+                        <li class="nav-item">
+                            <a class="nav-link text-light " asp-area="" asp-controller="Home" asp-action="Citasdiarias">Citas </a>
+                        </li>
+
+                    </ul>
+
+                    <!-- Aquí comienza la sección que queremos mover a la derecha -->
+                    <ul class="navbar-nav ml-auto">
+                        @if (Context.Session.Keys.Contains("Username"))
+                        {
+                            var userRole = Context.Session.GetInt32("RolId");
+                            if (userRole == 1 || userRole == 2)
+                            {
+                                <li class="nav-item" style="margin-right: 15px;">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Cuenta" asp-action="DashBoardUsuarios">Roles Usuario</a>
+                                </li>
+
+                                <li class="nav-item" style="margin-right: 15px;">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Modulos" asp-action="Cortes">Cortes</a>
+                                </li>
+
+                                <li class="nav-item" style="margin-right: 15px;">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Modulos" asp-action="Ventas">Ventas</a>
+                                </li>
+
+                                 <li class="nav-item" style="margin-right: 15px;">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Modulos" asp-action="VistaRegistrosCortes">Registros Cortes</a>
+                                </li>
+
+                                <li class="nav-item" style="margin-right: 15px;">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Categorias" asp-action="Categorias">Categorias</a>
+                                </li>
+
+                                <li class="nav-item" style="margin-right: 15px;">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Categorias" asp-action="Productos">Productos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light " asp-area="" asp-controller="Event" asp-action="Index">Citas</a>
+                                </li>
+                            }
+
+                            if (userRole == 3)
+                            {
+                                <li class="nav-item" style="margin-right: 15px;">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Modulos" asp-action="RegistroCortes">Cortes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light " asp-area="" asp-controller="Event" asp-action="Create">Registro de citas</a>
+                                </li>
+                            }
+                            if (userRole == 4)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-light " asp-area="" asp-controller="Event" asp-action="Create">Registro de citas</a>
+                                </li>
+                              
+                            }
+                            <div class="dropdown" style="margin-right: 55px;">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @Context.Session.GetString("Username")
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Cuenta" asp-action="Logout">Cerrar Sesión</a></li>
+                                </ul>
+                            </div>
+                        }
+                        else
+                        {
+                            <li class="nav-item" style="margin-right: 15px;">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Login">Iniciar Sesión</a>
+                            </li>
+                        }
+                    </ul>
+                    <!-- Aquí termina la sección que queremos mover a la derecha -->
+
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="flex-grow-1">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <footer class="border-top footer text-muted bg-dark mt-auto py-3 position-fixed w-100" style="bottom: 0;">
+        <div class="container text-white">
+            &copy; 2023 - Barberia - <a  class="text-white">Levy</a>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

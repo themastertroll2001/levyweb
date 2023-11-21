@@ -1,0 +1,110 @@
+﻿@model Barberia.Models.Event
+
+@{
+    ViewData["Title"] = "Crear cita";
+    var userRole = Context.Session.GetInt32("RolId");
+}
+@if (ViewData["Alert"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData["Alert"]
+    </div>
+}
+<div class="container mt-3" style="max-width: 600px;">
+
+    <h1>@ViewData["Title"]</h1>
+
+    <h5>Verificar la lista del calendario mensual para reservacion de citas </h5>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label">Nombre</label>
+                    <input asp-for="Nombre" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Descripcion" class="control-label">Descripción</label>
+                    <textarea asp-for="Descripcion" class="form-control"></textarea>
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Telefono" class="control-label">Teléfono</label>
+                    <input id="Telefono" asp-for="Telefono" class="form-control" type="number" autocomplete="off" />
+                    <span id="telefonoError" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Fechainicio" class="control-label">Fecha de Inicio</label>
+                    <input id="fechaInicio" asp-for="Fechainicio" class="form-control datepicker" />
+                    <span asp-validation-for="Fechainicio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Finfecha" class="control-label">Fecha Final</label>
+                    <input id="fechaFin" asp-for="Finfecha" class="form-control datepicker" readonly/>
+                    <span asp-validation-for="Finfecha" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        @if (userRole == 1 || userRole == 2 || userRole == 3)
+        {
+            <a asp-controller="Event" asp-action="Index">Regresar a lista</a>
+        }
+    </div>
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fechaInicio = document.getElementById("fechaInicio");
+            const fechaFin = document.getElementById("fechaFin");
+            const telefono = document.getElementById("Telefono");
+            const telefonoError = document.getElementById("telefonoError");
+
+            fechaInicio.addEventListener("change", function () {
+                const fechaInicioVal = new Date(fechaInicio.value);
+                fechaInicioVal.setMinutes(fechaInicioVal.getMinutes() + 40);
+
+                const year = fechaInicioVal.getFullYear();
+                const month = String(fechaInicioVal.getMonth() + 1).padStart(2, '0');
+                const day = String(fechaInicioVal.getDate()).padStart(2, '0');
+                const hours = String(fechaInicioVal.getHours()).padStart(2, '0');
+                const minutes = String(fechaInicioVal.getMinutes()).padStart(2, '0');
+
+                fechaFin.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+            });
+
+            telefono.addEventListener("input", function () {
+                const telefonoValue = telefono.value;
+                if (telefonoValue.length !== 8) {
+                    telefonoError.textContent = "El número de teléfono debe tener exactamente 8 dígitos.";
+                } else {
+                    telefonoError.textContent = "";
+                }
+            });
+
+            document.querySelector("form").addEventListener("submit", function (event) {
+                const telefonoValue = telefono.value;
+                if (telefonoValue.length !== 8) {
+                    telefonoError.textContent = "El número de teléfono debe tener exactamente 8 dígitos.";
+                } else {
+                    telefonoError.textContent = "";
+                }
+            });
+        });
+    </script>
+}
+
+

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Barberia.Models.RegistrosCorte>
+
+@{
+    ViewData["Title"] = "Registro de Cortes";
+}
+
+<div class="container mt-5">
+
+    <div class="mb-3">
+        <a href="@Url.Action("RegistroCorteInsertar", "Modulos")" class="btn btn-primary">
+            Registrar nuevo Corte
+        </a>
+    </div>
+
+    <h3>Totales por mes</h3>
+    <table class="table table-hover table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Mes</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var total in ViewBag.TotalPorMes)
+            {
+                <tr>
+                    <td>@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(total.Key)</td>
+                    <td>Q.@total.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="container mt-5">
+    <br />
+    <input type="text" id="searchInput" class="form-control mb-3 shadow-sm" placeholder="Buscar...">
+    <br />
+    <br />
+    <table id="tablaUsuarios" class="table table-hover table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre del Cliente</th>
+                <th>Hora</th>
+                <th>Nombre de Corte</th>
+                <th>Nombre de Usuario</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var registro in Model)
+            {
+                <tr>
+                    <td>@registro.Fecha.ToShortDateString()</td>
+                    <td>@registro.NombreCliente</td>
+                    <td>@registro.Hora.ToString(@"hh\:mm")</td>
+                    <td>@registro.Corte.NombreCorte</td>
+                    <td>@registro.Usuario.NombreUsuario</td>
+                    <td>@registro.Precio</td>
+                    <td>@(registro.Estado == 1 ? "Activo" : "Inactivo")</td>
+                    <td>
+                        @if (registro.Estado == 1) // Sólo mostrar el botón de eliminar si el registro está activo
+                        {
+                            <a href="@Url.Action("EliminarRegistroCorte", "Modulos", new { id = registro.Id })" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de querer eliminar este registro?');">Eliminar</a>
+                            <a href="@Url.Action("EditarRegistroCorte", "Modulos", new { id = registro.Id })" class="btn btn-sm btn-warning">Editar</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+
+            $("#tablaUsuarios tbody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+
+</script>

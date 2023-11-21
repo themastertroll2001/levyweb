@@ -1,0 +1,71 @@
+﻿@model List<Barberia.Models.TdRolesUsuario>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2>Cambiar Rol</h2>
+            <br />
+            <!-- ... Tu código existente ... -->
+            <!-- Formulario para cambiar el rol -->
+            <form asp-action="CambiarRol" asp-controller="Cuenta" method="post">
+                <!-- Combobox para los roles -->
+                <select class="form-control mb-3" name="rolSeleccionado" required>
+                    <option value="">Seleccione un rol</option>
+                    @foreach (var role in ViewBag.Roles as List<Barberia.Models.Role>)
+                    {
+                        <option value="@role.Id">@role.Nombre</option>
+                    }
+                </select>
+
+                <!-- Añadir un campo oculto para enviar el ID del usuario al controlador -->
+                <input type="hidden" name="idUsuario" value="@ViewBag.idUsuario" />
+
+                <button id="btnCambiarRol" type="submit" class="btn btn-primary">Cambiar Rol</button>
+            </form>
+
+            <br />
+            <br />
+            <input type="text" id="searchInput" class="form-control mb-3 shadow-sm" placeholder="Buscar...">
+            <br />
+            <br />
+            <table class="table" id="tablaUsuarios">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Fecha</th>
+                        <th>Usuario</th>
+                        <th>Rol</th>
+                        <th>Estatus</th>
+                        <th>Cambio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.IdRolesTd</td>
+                            <td>@item.Fecha</td>
+                            <td>@item.IdUsuarioNavigation.NombreUsuario</td>
+                            <td>@item.IdRoleNavigation.Nombre</td>
+                            <td>@item.IdEstatusNavigation.Descripcion</td>
+                            <td>@item.Usuario</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+
+            $("#tablaUsuarios tbody tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+
+</script>

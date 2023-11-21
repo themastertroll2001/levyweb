@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Barberia.Models.Event>
+
+@{
+    ViewData["Title"] = "Lista citas";
+}
+
+<div class="container mt-3" style="max-width: 600px;">
+
+    <h1>@ViewData["Title"]</h1>
+    <a asp-action="DownloadPDF" class="btn btn-secondary">Descargar PDF</a>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Crear cita</a>
+    </p>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fechainicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Finfecha)
+                </th>
+
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Fechainicio)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Finfecha)</td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>
+
+
